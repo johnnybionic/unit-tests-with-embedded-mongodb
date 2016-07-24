@@ -10,3 +10,5 @@ so good for unit tests.
 
 As always, there's various ways round that. One way is to fake the database (e.g. fongo),
 another is to launch an instance of MongoDB when the tests run. That's what this project demonstrates. 
+
+I'm up to step 2 in the list given in "development-process.text"
