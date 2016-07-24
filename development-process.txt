@@ -1,0 +1,12 @@
+1: get a sample JSON file, read each object in turn as a string, or something that be used with Spring's MongoTemplate.save() 
+	- this article uses a similar approach, but requires separate objects per line : http://dontpanic.42.nl/2015/02/in-memory-mongodb-for-unit-and.html
+2: get the sample data into an embedded instance
+	- not using a fake or mocked DB - it's a real database 
+	- an additional step here was a converter that creates CoffeeShop instances from entries in the DB
+3: create a service to find the nearest coffee shop by location
+	- use the MongoDB driver directly
+	- an an extra, use MongoTemplate - switch between the two services using profiles (may not be possible due to how Spring Data works with MongoDB)
+4: create a controller that accepts ReST calls and brokers the service
+5: create a simple UI
+ 
+

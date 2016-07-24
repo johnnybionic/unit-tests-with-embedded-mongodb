@@ -1,0 +1,57 @@
+[
+{
+    "_id" : {"$oid" : "57907ce15f55e14ae0b90ac9"},
+    "openStreetMapId" : "N3593558608",
+    "location" : {
+        "type" : "Point",
+        "coordinates" : [ 
+            -1.0757409, 
+            53.0353138
+        ]
+    },
+    "timestamp" : null,
+    "user" : null,
+    "node" : "N3593558608",
+    "amenity" : "cafe",
+    "name" : "Catherine's",
+    "cuisine" : "sandwich"
+}
+,
+{
+    "_id" : {"$oid" : "57907ce15f55e14ae0b90aca"},
+    "openStreetMapId" : "N760520763",
+    "location" : {
+        "type" : "Point",
+        "coordinates" : [ 
+            -2.232327, 
+            53.478878
+        ]
+    },
+    "timestamp" : null,
+    "user" : null,
+    "node" : "N760520763",
+    "wheelchair" : "limited",
+    "amenity" : "cafe",
+    "ref:vatin" : "795871268",
+    "name" : "CaffÃ¨ Nero",
+    "fhrs:id" : "331286",
+    "addr:unit" : "1"
+}
+,
+{
+    "_id" : {"$oid" : "57907ce25f55e14ae0b90acb"},
+    "openStreetMapId" : "N336277460",
+    "location" : {
+        "type" : "Point",
+        "coordinates" : [ 
+            -0.1114994, 
+            51.5558123
+        ]
+    },
+    "timestamp" : null,
+    "user" : null,
+    "node" : "N336277460",
+    "amenity" : "cafe",
+    "name" : "Cafe Red Zone"
+}
+]
