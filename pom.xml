@@ -46,9 +46,7 @@
 			<artifactId>json-simple</artifactId>
 		</dependency>
 
-		<!-- embedded MongoDB
-		refer to application.properties 
-		 -->
+		<!-- embedded MongoDB refer to application.properties -->
 		<dependency>
 			<groupId>de.flapdoodle.embed</groupId>
 			<artifactId>de.flapdoodle.embed.mongo</artifactId>
@@ -67,7 +65,29 @@
 			<artifactId>lombok</artifactId>
 			<version>1.16.10</version>
 		</dependency>
+
+		<!-- Spring Boot specifies MongoDB's drivers, but they are older (2.x), and do not support what gets taught on the MongoUni Java 101 course :)
+			- for instance, the new Document class, which replaces the BasicDBObject
+			- fingers crossed that it doesn't interfere with MongoTemplate, but I primarily want to use the driver directly
+		-->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.2.2</version>
+		</dependency><!--$NO-MVN-MAN-VER$-->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver-core</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+
 	</dependencies>
+
 
 	<build>
 		<plugins>
