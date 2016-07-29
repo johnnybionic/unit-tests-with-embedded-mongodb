@@ -15,14 +15,17 @@ import org.springframework.data.mongodb.core.query.NearQuery;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * An implementation of the DAO that uses Spring's MongoTemplate.
  * 
  * @author johnny
  *
  */
-@Component
-@Profile("mongotemplate")
+@Component(value="mongotemplate")
+//@Profile("mongotemplate")
+@Slf4j
 public class CoffeeShopTemplateDao implements CoffeeShopDao {
 
 	private static final String COFFEESHOPS_COLLECTION = "coffeeshops";
@@ -38,12 +41,18 @@ public class CoffeeShopTemplateDao implements CoffeeShopDao {
 	
 	@Override
 	public CoffeeShop findById(String coffeeShopId) {
+		log.info("findById [{}]", coffeeShopId);
 		CoffeeShop findById = mongoTemplate.findById(coffeeShopId, CoffeeShop.class, COFFEESHOPS_COLLECTION);
+		if (findById == null) {
+			log.warn("Nothing found");
+		}
 		return findById;
 	}
 
 	@Override
 	public CoffeeShop findByCoordinates(double longitude, double latitude) {
+		log.info("findByCoordinates longitude [{}] latitude [{}]", longitude, latitude);
+
 		Point point = new Point(longitude, latitude);
 		Distance max = new Distance(maxDistance / 100, Metrics.KILOMETERS);
 		Distance min = new Distance(minDistance / 100, Metrics.KILOMETERS);
@@ -60,6 +69,7 @@ public class CoffeeShopTemplateDao implements CoffeeShopDao {
 			return next.getContent();
 		}
 		
+		log.warn("Nothing found");
 		return null;
 	}
 

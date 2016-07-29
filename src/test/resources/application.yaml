@@ -3,3 +3,4 @@ spring:
     mongodb:
       port: 27999
       database: coffeeshop
+      host: 127.0.0.1

@@ -6,10 +6,13 @@ import static org.johnnybionic.service.AbstractCoffeeShopServiceTest.LONGITUDE;
 import static org.johnnybionic.service.AbstractCoffeeShopServiceTest.getCoffeeShop;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Matchers.anyDouble;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.johnnybionic.domain.CoffeeShop;
+import org.johnnybionic.exception.CoffeeShopNotFoundException;
 import org.johnnybionic.service.CoffeeShopService;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,8 +45,22 @@ public class CoffeeShopControllerTest {
 	@Test
 	public void thatFindByLocationReturnsShop() {
 		when(service.findByCoordinates(LONGITUDE, LATITUDE)).thenReturn(getCoffeeShop());
-		controller.findByCoordinates(LONGITUDE, LATITUDE);
+		controller.findByCoordinates(LATITUDE, LONGITUDE);
 		verify(service).findByCoordinates(LONGITUDE, LATITUDE);
+	}
+
+	@Test(expected=CoffeeShopNotFoundException.class)
+	public void thatExceptionThrownIfNoShopFoundById() {
+		when(service.findById(anyString())).thenReturn(null);
+		controller.findById(COFFEE_SHOP_ID);
+		
+	}
+
+	@Test(expected=CoffeeShopNotFoundException.class)
+	public void thatExceptionThrownIfNoShopFoundByLocation() {
+		when(service.findByCoordinates(anyDouble(), anyDouble())).thenReturn(null);
+		controller.findByCoordinates(0d, 0d);
+		
 	}
 
 }

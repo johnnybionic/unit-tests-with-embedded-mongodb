@@ -1,3 +1,4 @@
+
 package org.johnnybionic.service;
 
 import org.johnnybionic.domain.CoffeeShop;

@@ -18,14 +18,17 @@ import com.mongodb.client.model.Filters;
 import com.mongodb.client.model.geojson.Point;
 import com.mongodb.client.model.geojson.Position;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * An implementation of the DAO that uses the MongoDB driver directly.
  * 
  * @author johnny
  *
  */
-@Component
-@Profile("mongodriver")
+@Component(value="mongodriver")
+//@Profile("mongodriver")
+@Slf4j
 public class CoffeeShopDriverDao implements CoffeeShopDao {
 	
 	private static final String COFFEESHOPS_COLLECTION = "coffeeshops";
@@ -45,6 +48,8 @@ public class CoffeeShopDriverDao implements CoffeeShopDao {
 	
 	@Override
 	public CoffeeShop findById(String coffeeShopId) {
+		log.info("findById [{}]", coffeeShopId);
+		
 		ObjectId objectId = new ObjectId(coffeeShopId);
 		Bson filter = Filters.eq("_id", objectId);
 		ArrayList<Document> results = collection.find(filter).into(new ArrayList<Document>());
@@ -54,11 +59,14 @@ public class CoffeeShopDriverDao implements CoffeeShopDao {
 			return converter.convert(document);
 		}
 		
+		log.warn("Nothing found");
 		return null;
 	}
 
 	@Override
 	public CoffeeShop findByCoordinates(double longitude, double latitude) {
+		log.info("findByCoordinates longitude [{}] latitude [{}]", longitude, latitude);
+		
 		Point point = new Point(new Position(longitude, latitude));
 		Bson filter = Filters.near(LOCATION_FIELD, point, maxDistance, minDistance);
 		ArrayList<Document> results = collection.find(filter).into(new ArrayList<Document>());
@@ -66,6 +74,7 @@ public class CoffeeShopDriverDao implements CoffeeShopDao {
 			return converter.convert(results.get(0));
 		}
 		
+		log.warn("Nothing found");
 		return null;
 	}
 

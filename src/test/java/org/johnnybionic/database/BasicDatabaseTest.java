@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
+import org.springframework.data.mongodb.core.index.IndexInfo;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,7 +33,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *
  */
 
-public class BasicDatabaseTest extends AbstractDatabaseTest {
+public class BasicDatabaseTest extends AbstractDatabaseTest<CoffeeShop> {
 
 	/*
 	 * 1:
@@ -72,14 +73,14 @@ public class BasicDatabaseTest extends AbstractDatabaseTest {
 	@Test
 	public void thatSampleDataIsInTheEmbeddedDatabase () {
 		// when the test is run for the very first time, let's make sure this is actually wired up...
-		assertNotNull(mongoTemplate);
+		//assertNotNull(mongoTemplate); // made private
 		
 		loadSampleData("src/test/resources/coffee-shops.json", COFFEESHOPS_COLLECTION);
-		long count = getCollection(COFFEESHOPS_COLLECTION).count();
+		long count = getCountForCollection(COFFEESHOPS_COLLECTION);
 		assertTrue(count >= 3);
 		
 		removeCollection(COFFEESHOPS_COLLECTION);
-		count = getCollection(COFFEESHOPS_COLLECTION).count();
+		count = getCountForCollection(COFFEESHOPS_COLLECTION);
 		assertEquals(0, count);
 	}
 
@@ -89,20 +90,32 @@ public class BasicDatabaseTest extends AbstractDatabaseTest {
 	@Test
 	public void thatDomainClassesCanBeCreated() {
 		loadSampleData("src/test/resources/coffee-shops.json", COFFEESHOPS_COLLECTION);
-		List<CoffeeShop> findAll = mongoTemplate.findAll(CoffeeShop.class, COFFEESHOPS_COLLECTION);
+		List<CoffeeShop> findAll = findAll(CoffeeShop.class, COFFEESHOPS_COLLECTION);
 		assertNotNull(findAll);
 		
 		Query query = new Query();
 		query.addCriteria(Criteria.where("openStreetMapId").is("N3593558608"));
-		CoffeeShop findOne = mongoTemplate.findOne(query, CoffeeShop.class, COFFEESHOPS_COLLECTION);
+		CoffeeShop findOne = findOne(query, CoffeeShop.class, COFFEESHOPS_COLLECTION);
 		assertNotNull(findOne);
 		assertEquals("Catherine's", findOne.getName());
 		
-		CoffeeShop findById = mongoTemplate.findById("57907ce15f55e14ae0b90ac9", CoffeeShop.class, COFFEESHOPS_COLLECTION);
+		CoffeeShop findById = findById("57907ce15f55e14ae0b90ac9", CoffeeShop.class, COFFEESHOPS_COLLECTION);
 		assertNotNull(findById);
 		assertEquals(findOne, findById);
 
 		removeCollection(COFFEESHOPS_COLLECTION);
 
+	}
+	
+	/**
+	 * Ensure index is created
+	 */
+	@Test
+	public void thatIndexCreatedForLocation() {
+		loadSampleData("src/test/resources/coffee-shops.json", COFFEESHOPS_COLLECTION);
+		Object createIndex = createIndex(COFFEESHOPS_COLLECTION, LOCATION);
+		assertNotNull(createIndex);
+		removeCollection(COFFEESHOPS_COLLECTION);
+		
 	}
 }

@@ -9,9 +9,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles(inheritProfiles=true, profiles={"mongotemplate"})
+/**
+ * Tests the DAO that uses Spring's MongoTemplate.
+ * 
+ * See "profile-problems.txt" as to why profiles caused problems with the testing, and required a workaround.
+ * 
+ * @author johnny
+ *
+ */
+
+//@ActiveProfiles(inheritProfiles=true, profiles={"mongotemplate"})
 public class CoffeeShopTemplateDaoTest extends AbstractDatabaseTest<CoffeeShop> {
 
 	private static final String COFFEE_SHOP_ID = "57907ce15f55e14ae0b90ac9";
@@ -21,6 +31,7 @@ public class CoffeeShopTemplateDaoTest extends AbstractDatabaseTest<CoffeeShop> 
 	private static final double LATITUDE = 51.5357461d;
 
 	@Autowired
+	@Qualifier("mongotemplate")
 	private CoffeeShopDao dao;
 
 	@Before

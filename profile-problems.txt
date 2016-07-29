@@ -10,7 +10,7 @@ and CoffeeShopTemplateDaoTest - which tests the MongoTemplate-based DAO - had th
 This allowed the DAO interface to be specified wherever a DAO was required, including the tests, and the particular
 implementation would be injected at runtime. 
 
-A side effect of this is that Spring Test reloads the application context when it sees that the profile has changed. This is
+A side effect of this is that Spring Test reloads the application context when it detects that the profile has changed. This is
 no surprise really, as different instances will be created, and indeed that's what's required. However, the context change
 has problems with the embedded instance of MongoDB, which appeared not to be able to shut down and restart fast enough.
 
@@ -18,8 +18,8 @@ One idea I tried is to use random ports for each test, but that creates several 
 
 So I ended up using named beans for the DAO instances, which means that the DAO interface is still used, but with a @Qualifier. Not 
 as clean as using profiles, but does the job. There are two versions of the service, one for each DAO, and it's here that the
-profiles can be used to select which service gets used. The services don't load the context when tested, so the problem
-of changing profile doesn't manifest here. 
+profiles can be used to select which service gets used. The services don't load the context when tested (they are lightweight and just need a mock DAO), 
+so the problem of changing profile doesn't manifest here. 
 
 I imagine there are other solutions to this, and of course it wouldn't occur if I wasn't using an embedded MongoDB - but that's the
 whole point of the demo :) 

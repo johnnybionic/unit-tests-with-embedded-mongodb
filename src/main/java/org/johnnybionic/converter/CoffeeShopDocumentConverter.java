@@ -9,6 +9,14 @@ import org.johnnybionic.domain.CoffeeShop;
 import org.johnnybionic.domain.Coordinates;
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * This version of the converter uses the newer Document class from the latest MongoDB driver. When
+ * Spring Boot is updated, this converter can be used with MongoTemplate. Until then it's used
+ * directly in the DAO.
+ *  
+ * @author johnny
+ *
+ */
 public class CoffeeShopDocumentConverter implements Converter<Document, CoffeeShop> {
 
 	static final String LOCATION_KEY = "location";

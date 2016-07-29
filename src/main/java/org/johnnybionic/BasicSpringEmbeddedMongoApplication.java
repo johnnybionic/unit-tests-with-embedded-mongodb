@@ -33,6 +33,7 @@ public class BasicSpringEmbeddedMongoApplication {
 	 */
 	@PostConstruct
 	private void init() {
+		
 		List<CoffeeShopConverter> converters = new LinkedList<>();
 		converters.add(new CoffeeShopConverter());
 		CustomConversions conversions = new CustomConversions(converters);

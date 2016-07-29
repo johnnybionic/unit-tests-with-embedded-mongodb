@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * @author johnny
  *
  */
-@Profile("mongodriver")
+@Profile({"mongodriver", "default", "junit", "production"})
 @Service
 public class CoffeeShopDriverDaoService implements CoffeeShopService {
 

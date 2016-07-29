@@ -2,10 +2,10 @@ package org.johnnybionic.service;
 
 import org.mockito.InjectMocks;
 
-public class CoffeeShopServiceTemplateDaoTest extends AbstractCoffeeShopServiceTest {
+public class CoffeeShopTemplateDaoServiceTest extends AbstractCoffeeShopServiceTest {
 
 	@InjectMocks
-	private CoffeeShopServiceTemplateDao service;
+	private CoffeeShopTemplateDaoService service;
 
 	@Override
 	public CoffeeShopService getService() {

@@ -10,6 +10,14 @@ import org.springframework.core.convert.converter.Converter;
 import com.mongodb.BasicDBList;
 import com.mongodb.BasicDBObject;
 
+/**
+ * This version of the converter uses the older BasicDBObject class, from the MongoDB 2.x driver. 
+ * Spring Boot uses this version, and this converter is registered to perform conversions when reading
+ * from the database using MongoTemplate.
+ * 
+ * @author johnny
+ *
+ */
 public class CoffeeShopConverter implements Converter<BasicDBObject, CoffeeShop> {
 
 	static final String LOCATION_KEY = "location";

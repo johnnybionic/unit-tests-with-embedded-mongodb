@@ -53,5 +53,27 @@
     "node" : "N336277460",
     "amenity" : "cafe",
     "name" : "Cafe Red Zone"
+},
+{
+    "_id" : {"$oid" : "5794ed6bfd81ee2448f54b53"},
+    "openStreetMapId" : "N2300722786",
+    "location" : {
+        "type" : "Point",
+        "coordinates" : [ 
+            -0.1253052, 
+            51.5357237
+        ]
+    },
+    "timestamp" : null,
+    "user" : null,
+    "node" : "N2300722786",
+    "addr:housenumber" : "1",
+    "website" : "http://www.caravankingscross.co.uk/",
+    "phone" : "020 7101 7661",
+    "amenity" : "restaurant",
+    "name" : "Caravan",
+    "cuisine" : "coffee_shop",
+    "addr:street" : "Granary Square",
+    "addr:postcode" : "N1C 4AA"
 }
 ]

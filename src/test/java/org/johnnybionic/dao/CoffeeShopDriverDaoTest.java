@@ -8,9 +8,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ActiveProfiles;
 
-@ActiveProfiles(inheritProfiles=true, profiles={"mongodriver"})
+/**
+ * Tests the DAO that uses the MongoDB driver directly.
+ * 
+ * See "profile-problems.txt" as to why profiles caused problems with the testing, and required a workaround.
+ * 
+ * @author johnny
+ *
+ */
+
+//@ActiveProfiles(inheritProfiles=true, profiles={"mongodriver"})
 public class CoffeeShopDriverDaoTest extends AbstractDatabaseTest<CoffeeShop> {
 
 	private static final String COFFEE_SHOP_ID = "57907ce15f55e14ae0b90ac9";
@@ -20,6 +30,7 @@ public class CoffeeShopDriverDaoTest extends AbstractDatabaseTest<CoffeeShop> {
 	private static final double LATITUDE = 51.5357461d;
 
 	@Autowired
+	@Qualifier("mongodriver")
 	private CoffeeShopDao dao;
 
 	@Before

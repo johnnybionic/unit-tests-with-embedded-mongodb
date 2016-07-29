@@ -1,6 +1,5 @@
 package org.johnnybionic.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,13 @@ import org.springframework.context.annotation.Profile;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoDatabase;
 
-//@Profile("junit")
+/**
+ * Spring Boot does not provide MongoDatabase - it provides the older MongoDB - hence this configuration.
+ * 
+ * @author johnny
+ *
+ */
+@Profile("junit")
 @Configuration
 public class UnitTestCoffeeShopConfiguration {
 

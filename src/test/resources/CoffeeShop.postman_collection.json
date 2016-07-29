@@ -1,0 +1,51 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CoffeeShop",
+		"_postman_id": "c5334684-f4f7-d70b-348c-2fabe879786c",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get By ID",
+			"request": {
+				"url": "http://localhost:8080/service/coffeeshop/id/5794ed6bfd81ee2448f54b53",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"firstName\" : \"Frodo\",  \"lastName\" : \"Baggins\" }"
+				},
+				"description": "Gets a coffee shop by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Get by location",
+			"request": {
+				"url": "http://localhost:8080/service/coffeeshop/nearest/51.5357461/-0.125133",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{  \"firstName\" : \"Frodo\",  \"lastName\" : \"Baggins\" }"
+				},
+				"description": "Gets the coffee shop nearest the given coordiinates"
+			},
+			"response": []
+		}
+	]
+}
