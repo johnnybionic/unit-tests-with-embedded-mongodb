@@ -4,4 +4,4 @@ spring:
       port: 27017
       database: coffeeshop
       host: 127.0.0.1
-      uri: mongodb://webapp:webapp@ds023315.mlab.com:23315/coffeeshop
+      uri: mongodb://xxxx:xxxx@ds023315.mlab.com:23315/coffeeshop
