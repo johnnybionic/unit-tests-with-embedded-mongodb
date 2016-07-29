@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="coffeeApp">
+<head>
+<meta charset="UTF-8">
+
+<!--webjars-->
+<link rel='stylesheet' href='/webjars/bootstrap/css/bootstrap.min.css'>
+<script type="text/javascript"
+	src='/webjars/angularjs/1.5.7/angular.min.js'></script>
+
+<!--angular-->
+<script type="text/javascript" src='/js/coffee.js'></script>
+<script type="text/javascript"
+	src="/webjars/angularjs/1.5.7/angular-resource.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/angular-ui-bootstrap/1.3.3/ui-bootstrap-tpls.min.js"></script>
+
+<!--custom-->
+<link href="/css/starter-template.css" rel="stylesheet">
+
+<!--mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>Coffee Shop</title>
+</head>
+<body>
+	<div ng-controller="CoffeeShopController" class="container">
+		<div class="jumbotron">
+			<h1>Find nearest coffee shop</h1>
+			<p>Note that is can take the browser a few moments to find your
+				current location, before the service is called</p>
+			<div class="form-group">
+				<input type="button" class="btn btn-primary btn-lg"
+					value="Find my coffee shop" ng-click="findCoffeeShopNearestToMe()"
+					name="theButton">
+			</div>
+		</div>
+		<div class="panel panel-default" ng-show="nearestCoffeeShop">
+			<div class="panel-body">
+				<strong>{{nearestCoffeeShop.name}}</strong> <a ng-href=""></a>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
