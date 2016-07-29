@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      port: 27017
+      database: coffeeshop
+      host: 127.0.0.1
+      uri: mongodb://user:password@ds023315.mlab.com:23315/coffeeshop
