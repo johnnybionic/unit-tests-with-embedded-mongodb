@@ -1,5 +1,7 @@
 "# unit-tests-with-embedded-mongodb" 
 
+Spring Boot, AngularJS, Bootstrap, webjars, flapdoodle, lombok
+
 This project is a spin-off from a Coffee Shop app (see my other github projects), which itself was based on a MongoDB presentation here:
 
 https://www.infoq.com/presentations/demo-java-javascript-mongodb
@@ -23,3 +25,4 @@ Running the app
 - without any parameters for local database, using the MongoDB driver directly
 - '-Dspring.profiles.active=production' to use remote database (application-production.yaml) and MongoDB driver
 - '-Dspring.profiles.active=mongotemplate' to use local database, using the MongoTemplate
+
