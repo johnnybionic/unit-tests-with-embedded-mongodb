@@ -15,16 +15,14 @@ import lombok.NoArgsConstructor;
  *
  */
 @Data
-@AllArgsConstructor(access=AccessLevel.PUBLIC)
-@NoArgsConstructor(access=AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode
 public class CoffeeShop {
 
-	String _id;
-	//String openStreetMapId;
-	String name;
-	//Object location;
-	Coordinates coordinates;
-	
-	Map<String, String> attributes;
+    private String id;
+    private String name;
+    private Coordinates coordinates;
+
+    private Map<String, String> attributes;
 }
