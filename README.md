@@ -1,4 +1,6 @@
-"# unit-tests-with-embedded-mongodb" 
+# unit-tests-with-embedded-mongodb
+
+[![Build status](https://travis-ci.org/johnnybionic/unit-tests-with-embedded-mongodb.svg?branch=master)](https://travis-ci.org/johnnybionic/unit-tests-with-embedded-mongodb) 
 
 Spring Boot, AngularJS, Bootstrap, webjars, flapdoodle, lombok
 
@@ -26,3 +28,6 @@ Running the app
 - '-Dspring.profiles.active=production' to use remote database (application-production.yaml) and MongoDB driver
 - '-Dspring.profiles.active=mongotemplate' to use local database, using the MongoTemplate
 
+#points of interest
+
+The data used is an extract from OpenStreetMaps 
