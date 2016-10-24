@@ -1,8 +1,9 @@
 # unit-tests-with-embedded-mongodb
 
 [![Build status](https://travis-ci.org/johnnybionic/unit-tests-with-embedded-mongodb.svg?branch=master)](https://travis-ci.org/johnnybionic/unit-tests-with-embedded-mongodb) 
+[![Coverage Status](https://coveralls.io/repos/github/johnnybionic/unit-tests-with-embedded-mongodb/badge.svg?branch=master)](https://coveralls.io/github/johnnybionic/unit-tests-with-embedded-mongodb?branch=master)
 
-Spring Boot, AngularJS, Bootstrap, webjars, flapdoodle, lombok
+Uses: Spring Boot, AngularJS, Bootstrap, webjars, flapdoodle, lombok
 
 This project is a spin-off from a Coffee Shop app (see my other github projects), which itself was based on a MongoDB presentation here:
 

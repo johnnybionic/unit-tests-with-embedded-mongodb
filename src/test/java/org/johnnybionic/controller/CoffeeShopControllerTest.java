@@ -22,45 +22,45 @@ import org.mockito.MockitoAnnotations;
 
 public class CoffeeShopControllerTest {
 
-	@InjectMocks
-	private CoffeeShopController controller;
-	
-	@Mock
-	private CoffeeShopService service;
-	
-	@Before
-	public void initTest() {
-		MockitoAnnotations.initMocks(this);
-	}
-	
-	@Test
-	public void thatFindByIdReturnsShop() {
-		when(service.findById(COFFEE_SHOP_ID)).thenReturn(getCoffeeShop());
-		CoffeeShop findById = controller.findById(COFFEE_SHOP_ID);
-		verify(service).findById(COFFEE_SHOP_ID);
-		assertNotNull(findById);
-		assertEquals(COFFEE_SHOP_ID, findById.get_id());
-	}
+    @InjectMocks
+    private CoffeeShopController controller;
 
-	@Test
-	public void thatFindByLocationReturnsShop() {
-		when(service.findByCoordinates(LONGITUDE, LATITUDE)).thenReturn(getCoffeeShop());
-		controller.findByCoordinates(LATITUDE, LONGITUDE);
-		verify(service).findByCoordinates(LONGITUDE, LATITUDE);
-	}
+    @Mock
+    private CoffeeShopService service;
 
-	@Test(expected=CoffeeShopNotFoundException.class)
-	public void thatExceptionThrownIfNoShopFoundById() {
-		when(service.findById(anyString())).thenReturn(null);
-		controller.findById(COFFEE_SHOP_ID);
-		
-	}
+    @Before
+    public void initTest() {
+        MockitoAnnotations.initMocks(this);
+    }
 
-	@Test(expected=CoffeeShopNotFoundException.class)
-	public void thatExceptionThrownIfNoShopFoundByLocation() {
-		when(service.findByCoordinates(anyDouble(), anyDouble())).thenReturn(null);
-		controller.findByCoordinates(0d, 0d);
-		
-	}
+    @Test
+    public void thatFindByIdReturnsShop() {
+        when(service.findById(COFFEE_SHOP_ID)).thenReturn(getCoffeeShop());
+        final CoffeeShop findById = controller.findById(COFFEE_SHOP_ID);
+        verify(service).findById(COFFEE_SHOP_ID);
+        assertNotNull(findById);
+        assertEquals(COFFEE_SHOP_ID, findById.getId());
+    }
+
+    @Test
+    public void thatFindByLocationReturnsShop() {
+        when(service.findByCoordinates(LONGITUDE, LATITUDE)).thenReturn(getCoffeeShop());
+        controller.findByCoordinates(LATITUDE, LONGITUDE);
+        verify(service).findByCoordinates(LONGITUDE, LATITUDE);
+    }
+
+    @Test(expected = CoffeeShopNotFoundException.class)
+    public void thatExceptionThrownIfNoShopFoundById() {
+        when(service.findById(anyString())).thenReturn(null);
+        controller.findById(COFFEE_SHOP_ID);
+
+    }
+
+    @Test(expected = CoffeeShopNotFoundException.class)
+    public void thatExceptionThrownIfNoShopFoundByLocation() {
+        when(service.findByCoordinates(anyDouble(), anyDouble())).thenReturn(null);
+        controller.findByCoordinates(0d, 0d);
+
+    }
 
 }
