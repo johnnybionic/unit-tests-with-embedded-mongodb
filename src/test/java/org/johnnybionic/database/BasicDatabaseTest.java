@@ -29,6 +29,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * Tests that the embedded MongoDB server starts and can perform simple read/write operations,
  * and load data from test files. In other words, ensures 'proper' unit tests will work.
  * 
+ * This is where the development began, with simple steps, building upon each.
+ * 
  * @author johnny
  *
  */
@@ -36,8 +38,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class BasicDatabaseTest extends AbstractDatabaseTest<CoffeeShop> {
 
 	/*
-	 * 1:
+	 * Step 1:
 	 * Get a basic JSON file reader working.
+	 * The data is a smplae extract from OpenStreetMap
 	 */
 	@Test
 	public void thatJSONFileIsRead() throws IOException, ParseException {
@@ -57,9 +60,9 @@ public class BasicDatabaseTest extends AbstractDatabaseTest<CoffeeShop> {
 		}
 	}
 	
-	/* 2:
+	/* Step 2:
 	 * Push the file reading bit into an abstract superclass.
-	 * Also, the annotations used to run the test class.
+	 * Also, annotate the superclass with the annotations used to run the test class.
 	 */
 	@Test
 	public void thatJSONFileReaderIsShared() {
@@ -68,7 +71,7 @@ public class BasicDatabaseTest extends AbstractDatabaseTest<CoffeeShop> {
 	}
 	
 	/*
-	 * 3: ensure sample data is in the database. There should be at least three records.
+	 * Step 3: ensure sample data is in the database. There should be at least three records.
 	 */
 	@Test
 	public void thatSampleDataIsInTheEmbeddedDatabase () {
@@ -85,7 +88,7 @@ public class BasicDatabaseTest extends AbstractDatabaseTest<CoffeeShop> {
 	}
 
 	/**
-	 * We should be able to get actual instances from the template.
+	 * Should be able to get actual instances from the template.
 	 */
 	@Test
 	public void thatDomainClassesCanBeCreated() {
